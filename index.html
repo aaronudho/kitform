@@ -3,170 +3,148 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kitform: step by step CAD build guides</title>
-<meta name="description" content="Kitform is a library of step by step SolidWorks build guides, laid out like a building set booklet. Launching soon.">
+<title>Kitform: build sets for SOLIDWORKS users</title>
+<meta name="description" content="Kitform is step by step SOLIDWORKS build sets, laid out like a toy instruction booklet. Launching soon.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6FD9'/%3E%3Cpath d='M9 8v16M9 16l9-8M9 16l9 8' stroke='white' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
 <style>
-:root{--paper:#FBF8F3;--paper-2:#F4EFE6;--surface:#fff;--ink:#1F2A3C;--ink-2:#55607A;--ink-3:#5F6878;--line:#E9E2D6;--blue:#3D6FD9;--blue-ink:#2F5BBF;--blue-wash:#EEF3FD;--sun:#F2A93B;--sun-wash:#FDF3E1;--draw:#34476A;--green:#2E8A68;--amber:#B57A12;--red:#C0504A;color-scheme:light}
+@font-face{font-family:"Nunito";font-weight:800;font-style:normal;font-display:swap;src:url(assets/fonts/nunito-800.woff2) format("woff2")}
+@font-face{font-family:"Nunito Sans";font-weight:400;font-style:normal;font-display:swap;src:url(assets/fonts/nunito-sans-400.woff2) format("woff2")}
+@font-face{font-family:"Nunito Sans";font-weight:600;font-style:normal;font-display:swap;src:url(assets/fonts/nunito-sans-600.woff2) format("woff2")}
+@font-face{font-family:"Nunito Sans";font-weight:700;font-style:normal;font-display:swap;src:url(assets/fonts/nunito-sans-700.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-weight:500;font-style:normal;font-display:swap;src:url(assets/fonts/plex-mono-500.woff2) format("woff2")}
+:root{--paper:#FBF8F3;--paper-2:#F4EFE6;--surface:#FFFFFF;--ink:#1F2A3C;--ink-2:#55607A;--ink-3:#5F6878;--line:#E9E2D6;--grid:rgba(61,111,217,0.035);--grid-major:rgba(61,111,217,0.06);--blue:#3D6FD9;--blue-ink:#2F5BBF;--blue-wash:#EEF3FD;--sun:#F2A93B;--sun-ink:#E39522;--sun-wash:#FDF3E1;--draw:#34476A;--font:"Nunito Sans","Helvetica Neue",Helvetica,Arial,sans-serif;--display:"Nunito","Nunito Sans","Helvetica Neue",Arial,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;--shadow:0 1px 2px rgba(31,42,60,.04),0 10px 28px -14px rgba(31,42,60,.16);--shadow-lift:0 2px 4px rgba(31,42,60,.05),0 18px 40px -16px rgba(31,42,60,.22);color-scheme:light}
 *{box-sizing:border-box}
 html,body{margin:0}
-body{background:var(--paper);color:var(--ink);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;line-height:1.6;
-background-image:linear-gradient(rgba(61,111,217,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(61,111,217,.045) 1px,transparent 1px);background-size:32px 32px}
+body{min-height:100vh;display:flex;flex-direction:column;background:var(--paper);color:var(--ink);font:400 16px/1.55 var(--font);-webkit-font-smoothing:antialiased}
+h1{text-wrap:balance;margin:0;letter-spacing:-.015em;font-family:var(--display);font-weight:800}
+p{margin:0}
 a{color:var(--blue-ink)}
-a:focus-visible{outline:3px solid var(--blue-ink);outline-offset:3px;border-radius:4px}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-.mono{font-family:ui-monospace,Menlo,Consolas,monospace}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.graph{background-color:var(--paper);background-image:linear-gradient(var(--grid-major) 1px,transparent 1px),linear-gradient(90deg,var(--grid-major) 1px,transparent 1px),linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:120px 120px,120px 120px,24px 24px,24px 24px;background-position:-1px -1px}
+.corners{--c:var(--blue);--l:12px;background:linear-gradient(var(--c),var(--c)) top left/var(--l) 1px no-repeat,linear-gradient(var(--c),var(--c)) top left/1px var(--l) no-repeat,linear-gradient(var(--c),var(--c)) top right/var(--l) 1px no-repeat,linear-gradient(var(--c),var(--c)) top right/1px var(--l) no-repeat,linear-gradient(var(--c),var(--c)) bottom left/var(--l) 1px no-repeat,linear-gradient(var(--c),var(--c)) bottom left/1px var(--l) no-repeat,linear-gradient(var(--c),var(--c)) bottom right/var(--l) 1px no-repeat,linear-gradient(var(--c),var(--c)) bottom right/1px var(--l) no-repeat}
+.cat{display:block;flex:none}
 
-/* header */
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px 0}
-.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.35rem;letter-spacing:-.02em;color:var(--ink);text-decoration:none}
-.pill{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-ink);background:var(--blue-wash);padding:5px 12px;border-radius:999px}
+.hdr{background:rgba(251,248,243,.9);border-bottom:1px solid var(--line)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:60px}
+.logo{display:inline-flex;align-items:center;gap:8px;font:800 21px/1 var(--display);letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.chip{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--blue-ink);background:var(--blue-wash);padding:8px 12px;border-radius:999px}
 
-/* hero */
-.hero{display:grid;gap:28px;padding:20px 0 40px;align-items:center}
-.hero h1{font-size:clamp(2.3rem,7.5vw,3.8rem);line-height:1.05;letter-spacing:-.03em;margin:0 0 16px}
-.hero h1 span{color:var(--blue-ink)}
-.lede{font-size:1.15rem;color:var(--ink-2);margin:0 0 20px;max-width:34em}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
-.tags li{font-size:.9rem;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
-.sheet{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:0 10px 28px -14px rgba(31,42,60,.2)}
-.sheet svg{display:block;width:100%;height:auto}
-.sheet figcaption{display:flex;justify-content:space-between;gap:8px;font-size:.78rem;color:var(--ink-3);padding:8px 4px 0}
+.hero{flex:1}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center;padding-block:64px 72px}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px 14px 5px 6px;font-size:14px;font-weight:600;color:var(--ink-2);box-shadow:var(--shadow)}
+.hero h1{font-size:clamp(36px,5.2vw,58px);line-height:1.04;margin:16px 0 18px}
+.hero h1 em{font-style:normal;color:var(--blue)}
+.lede{font-size:18px;color:var(--ink-2);max-width:30em}
+.facts{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
+.facts li{font-size:14px;font-weight:600;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px}
+.contact{margin-top:22px;color:var(--ink-3);font-size:15px}
+.hero-sheet{position:relative;background-color:var(--surface);border:1px solid var(--line);border-radius:24px;padding:18px;box-shadow:var(--shadow-lift)}
+.hero-sheet>svg{display:block;width:100%;height:auto}
+.hero-cat{position:absolute;left:-18px;bottom:-22px;background:var(--surface);border-radius:999px;padding:8px;box-shadow:var(--shadow-lift)}
+.tblock{display:grid;grid-template-columns:auto 1fr auto;margin-top:10px;border:1px solid var(--draw);border-radius:6px;overflow:hidden;font:500 10px/1 var(--mono);letter-spacing:.06em;color:var(--draw);text-transform:uppercase}
+.tblock>span{padding:6px 8px;border-right:1px solid var(--draw);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tblock>span:last-child{border-right:0}
+@media(max-width:820px){.hero .wrap{grid-template-columns:1fr;padding-block:36px 44px;gap:34px}.hero-cat{left:auto;right:12px;bottom:-18px}}
 
-/* sections */
-section{padding:34px 0}
-h2{font-size:clamp(1.5rem,4.5vw,2rem);letter-spacing:-.02em;margin:0 0 8px}
-.sub{color:var(--ink-2);margin:0 0 22px;max-width:36em}
-.grid{display:grid;gap:14px;margin:0;padding:0;list-style:none}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 6px 20px -14px rgba(31,42,60,.18)}
-.card h3{margin:10px 0 6px;font-size:1.1rem}
-.card p{margin:0;color:var(--ink-2);font-size:1rem}
-.num{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--blue-wash);color:var(--blue-ink);font-weight:800}
-.lv{display:inline-block;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:999px;background:var(--paper-2)}
-.lv.b{color:var(--green)}.lv.i{color:var(--amber)}.lv.a{color:var(--red)}
-.band{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.checks{display:grid;gap:12px;margin:0;padding:0;list-style:none}
-.checks li{position:relative;padding-left:30px;color:var(--ink)}
-.checks li:before{content:"";position:absolute;left:2px;top:8px;width:12px;height:12px;border-radius:4px;background:var(--sun)}
-.checks span{display:block;color:var(--ink-2);font-size:.95rem}
-.soon{text-align:center;background:var(--blue-wash);border:1px solid #D3E0F8;border-radius:18px;padding:34px 20px}
-.soon p{margin:0 auto;color:var(--ink-2);max-width:32em}
-.maker{color:var(--ink-3);font-size:.95rem;margin:18px 0 0}
-
-footer{padding:26px 0 34px;color:var(--ink-3);font-size:.85rem;text-align:center}
-footer p{margin:0 auto 6px;max-width:620px;color:var(--ink-3);font-size:.85rem}
-
-@media(min-width:760px){
-  .hero{grid-template-columns:1.1fr .9fr;gap:44px;padding:36px 0 56px}
-  .grid.three{grid-template-columns:repeat(3,1fr)}
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
-}
+.dw .ln{fill:none;stroke:var(--draw);stroke-width:1.4;stroke-linejoin:round;stroke-linecap:round}
+.dw .th{stroke-width:.8}
+.dw .fl{fill:var(--surface);stroke:none}
+.dw .hd{fill:none;stroke:var(--draw);stroke-width:.8;stroke-dasharray:4 3;opacity:.55}
+.dw .cl{fill:none;stroke:var(--blue);stroke-width:.7;stroke-dasharray:12 3 2 3}
+.dw .dm{fill:none;stroke:var(--blue);stroke-width:.7}
+.dw .dt{font:500 9.5px var(--mono);fill:var(--blue);letter-spacing:.04em}
+.dw .dtbg{fill:var(--surface)}
+.dw .hl{stroke:var(--blue)!important;stroke-width:2.4!important;opacity:1!important;stroke-dasharray:none!important}
+.dw .hlf{fill:var(--blue-wash)}
+.dw .pl{fill:var(--blue-wash);stroke:var(--blue);stroke-width:.8;opacity:.9}
+.dw .ac{fill:var(--blue)}
+footer{border-top:1px solid var(--line);background:var(--surface);padding:18px 0 22px;color:var(--ink-3);font-size:13px;text-align:center}
+footer p{margin:0 auto 4px;max-width:640px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <a class="brand" href="./" aria-label="Kitform home">
-      <svg width="34" height="34" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#3D6FD9"/><path d="M9 8v16M9 16l9-8M9 16l9 8" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>
-      Kitform
-    </a>
-    <span class="pill">Launching soon</span>
-  </header>
+<header class="hdr"><div class="wrap">
+  <a class="logo" href="./" aria-label="Kitform home"><svg class="cat" width="39" height="34" viewBox="0 0 60 52" aria-hidden="true" focusable="false">
+    
+    <g transform="translate(1 2)">
+      <path d="M10.5 23 12.5 7.5 22 15.5Z M37.5 23 35.5 7.5 26 15.5Z" fill="#F2A93B" stroke="#1F2A3C" stroke-width="1.6" stroke-linejoin="round"/>
+      <ellipse cx="24" cy="26" rx="15" ry="13" fill="#F2A93B" stroke="#1F2A3C" stroke-width="1.6"/>
+      <path d="M14.2 10.8 15 16.8 18.8 13.6Z M33.8 10.8 33 16.8 29.2 13.6Z" fill="#FDF3E1"/>
+      <ellipse cx="18.5" cy="25" rx="1.9" ry="2.3" fill="#1F2A3C"/>
+      <ellipse cx="29.5" cy="25" rx="1.9" ry="2.3" fill="#1F2A3C"/>
+      <path d="M22.6 29.4h2.8L24 31Z" fill="#1F2A3C"/>
+      <path d="M24 31c-.6 1.3-2 1.8-3.2 1.2M24 31c.6 1.3 2 1.8 3.2 1.2" fill="none" stroke="#1F2A3C" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+    
+    <g transform="translate(38.5 42.5) rotate(-60)">
+      <g fill="#1F2A3C" stroke="#1F2A3C" stroke-width="2.6" stroke-linejoin="round"><rect x="-7" y="-2.4" width="24" height="4.8" rx="2.4"/><path transform="rotate(15 19 0)" d="M24.06 -2.5A5.7 5.7 0 1 0 24.06 2.5L20.3 2.5L20.3 -2.5Z"/></g>
+      <g fill="#3D6FD9"><rect x="-7" y="-2.4" width="24" height="4.8" rx="2.4"/><path transform="rotate(15 19 0)" d="M24.06 -2.5A5.7 5.7 0 1 0 24.06 2.5L20.3 2.5L20.3 -2.5Z"/></g>
+      <circle cx="-4" cy="0" r="1.1" fill="#FBF8F3"/>
+    </g>
+    <circle cx="38.5" cy="42.5" r="3.5" fill="#F2A93B" stroke="#1F2A3C" stroke-width="1.4"/>
+    
+  </svg>Kitform</a>
+  <span class="chip">Launching soon</span>
+</div></header>
 
-  <main>
-    <div class="hero">
-      <div>
-        <h1>Learn CAD <span>one small build</span> at a time.</h1>
-        <p class="lede">Kitform is a library of step by step SolidWorks build guides. Each set is laid out like a building set booklet: one change per step, picture first, few words. Pick a level, follow along, and finish a real model.</p>
-        <ul class="tags" aria-label="What is planned">
-          <li>Beginner to advanced</li>
-          <li>Drawings to read</li>
-          <li>Exam practice</li>
-        </ul>
-      </div>
-      <figure class="sheet" style="margin:0">
-        <svg viewBox="0 0 360 250" role="img" aria-label="A simple blueprint style drawing of a bracket with a hole and dimension lines">
-          <defs><pattern id="g" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#3D6FD9" stroke-opacity=".09"/></pattern></defs>
-          <rect width="360" height="250" rx="10" fill="#EEF3FD"/><rect width="360" height="250" rx="10" fill="url(#g)"/>
-          <g fill="none" stroke="#34476A" stroke-width="2.5" stroke-linejoin="round">
-            <path d="M70 70h210v100H70z"/>
-            <path d="M70 70l30-22h210l-30 22" stroke-width="1.8"/>
-            <path d="M310 48v100l-30 22" stroke-width="1.8"/>
-            <circle cx="175" cy="120" r="26"/>
-            <circle cx="175" cy="120" r="3" fill="#34476A"/>
-          </g>
-          <g stroke="#3D6FD9" stroke-width="1.4" fill="none">
-            <path d="M70 205h210M70 198v14M280 198v14"/>
-            <path d="M40 70v100M33 70h14M33 170h14"/>
-          </g>
-          <g font-family="ui-monospace,Menlo,Consolas,monospace" font-size="12" fill="#2F5BBF" text-anchor="middle">
-            <text x="175" y="224">80 mm</text>
-            <text x="22" y="124" transform="rotate(-90 22 124)">40 mm</text>
-          </g>
-          <g><rect x="248" y="196" width="94" height="40" rx="8" fill="#fff" stroke="#E9E2D6"/>
-          <text x="295" y="212" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="10" fill="#5F6878" text-anchor="middle">STEP 3 OF 12</text>
-          <text x="295" y="228" font-family="Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#1F2A3C" text-anchor="middle">Cut the hole</text></g>
-        </svg>
-        <figcaption><span class="mono">SAMPLE ONLY</span><span>Example of the drawing style</span></figcaption>
-      </figure>
-    </div>
-
-    <section aria-labelledby="how">
-      <h2 id="how">How it works</h2>
-      <p class="sub">No long videos to pause and rewind. Every set is a short booklet you follow one step at a time.</p>
-      <ol class="grid three">
-        <li class="card"><span class="num">1</span><h3>Pick a set</h3><p>Browse the catalog and choose a project at your level. Each one shows what you will build and roughly how long it takes.</p></li>
-        <li class="card"><span class="num">2</span><h3>Follow the booklet</h3><p>One change per step, with a clear picture of what the model should look like when you finish the step.</p></li>
-        <li class="card"><span class="num">3</span><h3>Finish a real model</h3><p>End with a complete part or assembly, plus a drawing you can read and a line you can use on your resume.</p></li>
-      </ol>
-    </section>
-  </main>
-</div>
-
-<div class="band">
-  <div class="wrap split" style="padding-top:38px;padding-bottom:38px">
-    <div>
-      <h2>Three levels</h2>
-      <p class="sub">Start where you are and move up when you are ready.</p>
-      <ul class="grid" style="gap:10px">
-        <li class="card" style="padding:16px 18px"><span class="lv b">Beginner</span><p style="margin-top:6px">Your first sketches, extrudes and simple parts.</p></li>
-        <li class="card" style="padding:16px 18px"><span class="lv i">Intermediate</span><p style="margin-top:6px">Multi feature parts and small assemblies.</p></li>
-        <li class="card" style="padding:16px 18px"><span class="lv a">Advanced</span><p style="margin-top:6px">Mechanisms, mates and drawings with more detail.</p></li>
-      </ul>
-    </div>
-    <div>
-      <h2>What is in every set</h2>
-      <p class="sub">Everything in one place, so you do not have to piece it together from search results.</p>
-      <ul class="checks">
-        <li>Step by step booklet<span>Short steps, pictures first.</span></li>
-        <li>Drawings you can read<span>Learn how a finished part is described on paper.</span></li>
-        <li>Exam practice<span>Original problems for the certification exams.</span></li>
-        <li>A resume line<span>A clear way to describe what you built.</span></li>
-      </ul>
-    </div>
+<main class="hero graph"><div class="wrap">
+  <div>
+    <span class="pill"><svg class="cat" width="32" height="28" viewBox="0 0 60 52" aria-hidden="true" focusable="false">
+    
+    <g transform="translate(1 2)">
+      <path d="M10.5 23 12.5 7.5 22 15.5Z M37.5 23 35.5 7.5 26 15.5Z" fill="#F2A93B" stroke="#1F2A3C" stroke-width="1.6" stroke-linejoin="round"/>
+      <ellipse cx="24" cy="26" rx="15" ry="13" fill="#F2A93B" stroke="#1F2A3C" stroke-width="1.6"/>
+      <path d="M14.2 10.8 15 16.8 18.8 13.6Z M33.8 10.8 33 16.8 29.2 13.6Z" fill="#FDF3E1"/>
+      <ellipse cx="18.5" cy="25" rx="1.9" ry="2.3" fill="#1F2A3C"/>
+      <ellipse cx="29.5" cy="25" rx="1.9" ry="2.3" fill="#1F2A3C"/>
+      <path d="M22.6 29.4h2.8L24 31Z" fill="#1F2A3C"/>
+      <path d="M24 31c-.6 1.3-2 1.8-3.2 1.2M24 31c.6 1.3 2 1.8 3.2 1.2" fill="none" stroke="#1F2A3C" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+    
+    <g transform="translate(38.5 42.5) rotate(-60)">
+      <g fill="#1F2A3C" stroke="#1F2A3C" stroke-width="2.6" stroke-linejoin="round"><rect x="-7" y="-2.4" width="24" height="4.8" rx="2.4"/><path transform="rotate(15 19 0)" d="M24.06 -2.5A5.7 5.7 0 1 0 24.06 2.5L20.3 2.5L20.3 -2.5Z"/></g>
+      <g fill="#3D6FD9"><rect x="-7" y="-2.4" width="24" height="4.8" rx="2.4"/><path transform="rotate(15 19 0)" d="M24.06 -2.5A5.7 5.7 0 1 0 24.06 2.5L20.3 2.5L20.3 -2.5Z"/></g>
+      <circle cx="-4" cy="0" r="1.1" fill="#FBF8F3"/>
+    </g>
+    <circle cx="38.5" cy="42.5" r="3.5" fill="#F2A93B" stroke="#1F2A3C" stroke-width="1.4"/>
+    
+  </svg>Build sets for SOLIDWORKS users</span>
+    <h1>Build it step by step, like a <em>toy instruction booklet.</em></h1>
+    <p class="lede">Each Kitform set walks you from a blank part to a finished model. One change per step, picture first, few words.</p>
+    <ul class="facts" aria-label="What is planned"><li>Beginner to advanced</li><li>Drawings to read</li><li>Exam practice</li></ul>
+    <p class="contact">Not open yet. Questions? <a href="mailto:hello@kitform.ca">hello@kitform.ca</a></p>
   </div>
-</div>
-
-<div class="wrap">
-  <section class="" aria-labelledby="who">
-    <h2 id="who">Who it is for</h2>
-    <p class="sub">Mechanical engineering students and anyone learning SolidWorks who wants to build things, not just watch.</p>
-    <p class="maker">Made by Aaron, a mechanical engineering student in the Greater Toronto Area.</p>
-  </section>
-
-  <section aria-labelledby="soon">
-    <div class="soon">
-      <h2 id="soon">Launching soon</h2>
-      <p>Kitform is not open yet. This page collects nothing and uses no cookies or trackers. Questions? Email <a href="mailto:hello@kitform.ca">hello@kitform.ca</a>.</p>
-    </div>
-  </section>
-</div>
+  <div class="hero-sheet corners">
+    <svg class="dw" viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><polygon class="fl" points="130,176 192,132.6 192,120.2 154.8,101.6 139.3,95.4 139.3,52 120.7,52 120.7,95.4 105.2,101.6 68,120.2 68,132.6 130,176"/><ellipse class="fl" cx="130" cy="120.2" rx="62" ry="21.1"/><ellipse class="fl" cx="130" cy="52" rx="9.3" ry="3.2"/><line class="cl" x1="130" y1="191.5" x2="130" y2="27.19999999999999"/><polyline class="ln" points="130,176 192,132.6 192,120.2 154.8,101.6 139.3,95.4 139.3,52"/><polyline class="ln" points="120.7,52 120.7,95.4 105.2,101.6 68,120.2 68,132.6 130,176"/><path class="hd" d="M68 132.6 A62 21.1 0 0 1 192 132.6"/><path class="ln" d="M68 132.6 A62 21.1 0 0 0 192 132.6"/><ellipse class="ln" cx="130" cy="120.2" rx="62" ry="21.1"/><ellipse class="ln th" cx="130" cy="101.6" rx="24.8" ry="8.4"/><path class="ln th" d="M120.7 95.4 A9.3 3.2 0 0 0 139.3 95.4"/><ellipse class="ln" cx="130" cy="52" rx="9.3" ry="3.2"/><line class="dm" x1="68" y1="192" x2="192" y2="192" marker-start="url(#ar)" marker-end="url(#ar)"/><line class="dm" x1="68" y1="138.6" x2="68" y2="196"/><line class="dm" x1="192" y1="138.6" x2="192" y2="196"/><rect class="dtbg" x="116.9" y="179" width="26.3" height="13"/><text class="dt" x="130" y="188" text-anchor="middle">Ø40</text><line class="dm" x1="216" y1="52" x2="216" y2="176" marker-start="url(#ar)" marker-end="url(#ar)"/><line class="dm" x1="143.3" y1="52" x2="220" y2="52"/><line class="dm" x1="134" y1="176" x2="220" y2="176"/><rect class="dtbg" x="218" y="108" width="20.2" height="13"/><text class="dt" x="222" y="117" text-anchor="start">40</text><polyline class="dm" points="120.7,61.3 78,33.400000000000006 60,33.400000000000006" marker-start="url(#ar)"/><rect class="dtbg" x="9.3" y="27.4" width="50.7" height="13"/><text class="dt" x="56" y="36.4" text-anchor="end">Ø6 STEM</text><rect class="dtbg" x="8" y="5" width="142.2" height="13"/><text class="dt" x="12" y="14" text-anchor="start">SAMPLE DIMENSIONS · MM</text></svg>
+    <div class="tblock"><span>Sample</span><span>Example drawing</span><span>Sheet 1/1</span></div>
+    <span class="hero-cat"><svg class="cat" width="60" height="52" viewBox="0 0 60 52" aria-hidden="true" focusable="false">
+    
+    <g transform="translate(1 2)">
+      <path d="M10.5 23 12.5 7.5 22 15.5Z M37.5 23 35.5 7.5 26 15.5Z" fill="#F2A93B" stroke="#1F2A3C" stroke-width="1.6" stroke-linejoin="round"/>
+      <ellipse cx="24" cy="26" rx="15" ry="13" fill="#F2A93B" stroke="#1F2A3C" stroke-width="1.6"/>
+      <path d="M14.2 10.8 15 16.8 18.8 13.6Z M33.8 10.8 33 16.8 29.2 13.6Z" fill="#FDF3E1"/>
+      <ellipse cx="18.5" cy="25" rx="1.9" ry="2.3" fill="#1F2A3C"/>
+      <ellipse cx="29.5" cy="25" rx="1.9" ry="2.3" fill="#1F2A3C"/>
+      <path d="M22.6 29.4h2.8L24 31Z" fill="#1F2A3C"/>
+      <path d="M24 31c-.6 1.3-2 1.8-3.2 1.2M24 31c.6 1.3 2 1.8 3.2 1.2" fill="none" stroke="#1F2A3C" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+    
+    <g transform="translate(38.5 42.5) rotate(-60)">
+      <g fill="#1F2A3C" stroke="#1F2A3C" stroke-width="2.6" stroke-linejoin="round"><rect x="-7" y="-2.4" width="24" height="4.8" rx="2.4"/><path transform="rotate(15 19 0)" d="M24.06 -2.5A5.7 5.7 0 1 0 24.06 2.5L20.3 2.5L20.3 -2.5Z"/></g>
+      <g fill="#3D6FD9"><rect x="-7" y="-2.4" width="24" height="4.8" rx="2.4"/><path transform="rotate(15 19 0)" d="M24.06 -2.5A5.7 5.7 0 1 0 24.06 2.5L20.3 2.5L20.3 -2.5Z"/></g>
+      <circle cx="-4" cy="0" r="1.1" fill="#FBF8F3"/>
+    </g>
+    <circle cx="38.5" cy="42.5" r="3.5" fill="#F2A93B" stroke="#1F2A3C" stroke-width="1.4"/>
+    
+  </svg></span>
+  </div>
+</div></main>
 
 <footer>
-  <div class="wrap">
-    <p>Kitform, run by Aaron Udho. <a href="mailto:hello@kitform.ca">hello@kitform.ca</a> &middot; <a href="privacy.html">Privacy policy</a></p>
-    <p>SOLIDWORKS is a trademark of Dassault Systèmes. Kitform is not affiliated with Dassault Systèmes.</p>
-  </div>
+  <p>Kitform, run by Aaron Udho &middot; <a href="mailto:hello@kitform.ca">hello@kitform.ca</a> &middot; <a href="privacy.html">Privacy policy</a></p>
+  <p>SOLIDWORKS is a trademark of Dassault Systèmes. Kitform is not affiliated with Dassault Systèmes. This page collects nothing and uses no cookies or trackers.</p>
 </footer>
 </body>
 </html>
