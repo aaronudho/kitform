@@ -24,8 +24,15 @@ p{margin:0 0 14px;color:var(--ink-2);font-size:1.05rem}
 ul{margin:0;padding:0;list-style:none}
 li{padding:10px 0 10px 28px;position:relative;color:var(--ink);border-top:1px solid var(--line)}
 li:before{content:"";position:absolute;left:4px;top:17px;width:10px;height:10px;border-radius:3px;background:var(--sun)}
+.wait{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+h2{font-size:1.25rem;margin:0 0 8px;color:var(--ink)}
+.btn{display:inline-block;min-height:44px;padding:12px 22px;border-radius:12px;background:var(--sun);color:var(--ink);font-weight:700;text-decoration:none;margin:4px 0 14px}
+.btn:hover{background:#E39522}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--blue-ink);outline-offset:3px}
+.fine{font-size:.85rem;color:var(--ink-3);margin:0}
+.fine a,footer a{color:var(--blue-ink)}
 footer{padding:20px 16px 28px;text-align:center;color:var(--ink-3);font-size:.85rem}
-footer p{font-size:.85rem;color:var(--ink-3);margin:0 auto;max-width:560px}
+footer p{font-size:.85rem;color:var(--ink-3);margin:0 auto 6px;max-width:560px}
 </style>
 </head>
 <body>
@@ -40,10 +47,16 @@ footer p{font-size:.85rem;color:var(--ink-3);margin:0 auto;max-width:560px}
       <li>Drawings you can read along with each build</li>
       <li>Practice problems for certification exams</li>
     </ul>
-    <p style="margin-top:22px">Kitform is not open yet. This page does not collect any information and uses no cookies or trackers.</p>
+    <div class="wait">
+      <h2>Get one email when it opens</h2>
+      <p>Kitform is not open yet. Join the waitlist and I'll send one message on launch day.</p>
+      <a class="btn" href="https://preview.mailerlite.io/forms/2750658/202597947381122807/share" rel="noopener">Join the waitlist</a>
+      <p class="fine">The button opens a signup page run by MailerLite, our email tool. This page itself collects nothing and uses no cookies or trackers. <a href="privacy.html">Privacy policy</a></p>
+    </div>
   </div>
 </main>
 <footer>
+  <p>Kitform, run by Aaron Udho. 133 Richmond St W Ste 207 #340, Toronto, ON M5H 2L3. <a href="mailto:hello@kitform.ca">hello@kitform.ca</a></p>
   <p>SOLIDWORKS is a trademark of Dassault Systèmes. Kitform is not affiliated with Dassault Systèmes.</p>
 </footer>
 </body>
