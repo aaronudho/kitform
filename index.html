@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kitform: coming soon</title>
+<meta name="description" content="Kitform is step-by-step CAD build guides laid out like a building-set booklet. Coming soon.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D6FD9'/%3E%3Cpath d='M9 8v16M9 16l9-8M9 16l9 8' stroke='white' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{--paper:#FBF8F3;--surface:#fff;--ink:#1F2A3C;--ink-2:#55607A;--ink-3:#5F6878;--line:#E9E2D6;--blue:#3D6FD9;--blue-ink:#2F5BBF;--blue-wash:#EEF3FD;--sun:#F2A93B;color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100vh;display:flex;flex-direction:column;background:var(--paper);color:var(--ink);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;line-height:1.55;
+background-image:linear-gradient(rgba(61,111,217,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(61,111,217,.05) 1px,transparent 1px);background-size:32px 32px}
+main{flex:1;display:grid;place-items:center;padding:48px 16px}
+.card{max-width:560px;width:100%;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:40px 32px;box-shadow:0 10px 28px -14px rgba(31,42,60,.16)}
+.eyebrow{display:inline-block;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--blue-ink);background:var(--blue-wash);padding:4px 10px;border-radius:999px}
+h1{font-size:clamp(2.2rem,8vw,3.2rem);line-height:1.1;margin:18px 0 12px;letter-spacing:-.02em}
+p{margin:0 0 14px;color:var(--ink-2);font-size:1.05rem}
+.dim{display:flex;align-items:center;gap:10px;margin:26px 0 6px;color:var(--ink-3);font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85rem}
+.dim i{flex:1;height:1px;background:var(--blue);opacity:.5;position:relative}
+.dim i:before,.dim i:after{content:"";position:absolute;top:-4px;width:1px;height:9px;background:var(--blue)}
+.dim i:before{left:0}.dim i:after{right:0}
+ul{margin:0;padding:0;list-style:none}
+li{padding:10px 0 10px 28px;position:relative;color:var(--ink);border-top:1px solid var(--line)}
+li:before{content:"";position:absolute;left:4px;top:17px;width:10px;height:10px;border-radius:3px;background:var(--sun)}
+footer{padding:20px 16px 28px;text-align:center;color:var(--ink-3);font-size:.85rem}
+footer p{font-size:.85rem;color:var(--ink-3);margin:0 auto;max-width:560px}
+</style>
+</head>
+<body>
+<main>
+  <div class="card">
+    <span class="eyebrow">Coming soon</span>
+    <h1>Kitform</h1>
+    <p>Learn CAD one small build at a time. Each set is a step-by-step guide laid out like a building-set booklet: picture first, few words.</p>
+    <div class="dim"><span>Planned</span><i></i></div>
+    <ul>
+      <li>Beginner, intermediate and advanced sets</li>
+      <li>Drawings you can read along with each build</li>
+      <li>Practice problems for certification exams</li>
+    </ul>
+    <p style="margin-top:22px">Kitform is not open yet. This page does not collect any information and uses no cookies or trackers.</p>
+  </div>
+</main>
+<footer>
+  <p>SOLIDWORKS is a trademark of Dassault Systèmes. Kitform is not affiliated with Dassault Systèmes.</p>
+</footer>
+</body>
+</html>
